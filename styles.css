@@ -1,0 +1,249 @@
+/* Edit these variables to change the site's colors and reading width. */
+:root {
+  color-scheme: light dark;
+  --background: #fcfcfb;
+  --text: #292d30;
+  --muted: #646a70;
+  --heading: #1d2226;
+  --accent: #35617b;
+  --border: #e0e3e5;
+  --content-width: 850px;
+}
+
+/* Follow the operating system's theme; no JavaScript or switch needed. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #181b1e;
+    --text: #d9dde0;
+    --muted: #a0a8af;
+    --heading: #edf0f2;
+    --accent: #9abed4;
+    --border: #353b40;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.page {
+  width: calc(100% - 3rem);
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+h1, h2, h3, p, ul, dl, dd {
+  margin: 0;
+}
+
+h1, h2, h3, dt {
+  color: var(--heading);
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 650;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+h3, dt {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+a:hover {
+  color: var(--heading);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+  border-radius: 1px;
+}
+
+.site-header {
+  padding-block: 5rem 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.tagline {
+  margin-top: 0.65rem;
+  color: var(--muted);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+  margin-top: 1.5rem;
+}
+
+nav a, .footer-links a, .footer-links .pending-link {
+  display: inline-block;
+  padding-block: 0.4rem;
+}
+
+/* A quiet section label on the left; readable content on the right. */
+.section {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 1.5rem;
+  padding-block: 2.75rem;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 1.5rem;
+}
+
+.section-content {
+  min-width: 0;
+}
+
+.muted, .section-intro, .pending-link, .status {
+  color: var(--muted);
+}
+
+.about-copy p + p {
+  margin-top: 0.75rem;
+}
+
+.section-intro {
+  margin-bottom: 1.5rem;
+}
+
+.research-list, .project-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.research-list dd, .project-list p {
+  margin-top: 0.25rem;
+}
+
+.project-list, .notes-list, .writing-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.project-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+}
+
+.status, .project-list .pending-link {
+  font-size: 0.875rem;
+}
+
+.project-list .pending-link {
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+
+.pending-link {
+  cursor: default;
+}
+
+.notes-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem 2rem;
+}
+
+.writing-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.writing-category {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.25rem 2rem;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem 2rem;
+  padding-block: 1.75rem 3.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.4rem;
+}
+
+/* Keyboard users can jump straight to the main content. */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 1.5rem;
+  padding: 0.5rem 0.75rem;
+  background: var(--background);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* On small screens, section labels sit above their content. */
+@media (max-width: 640px) {
+  .site-header {
+    padding-block: 3rem 2rem;
+  }
+
+  h1 {
+    font-size: 2.125rem;
+  }
+
+  nav {
+    column-gap: 1.15rem;
+  }
+
+  .section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding-block: 2rem;
+  }
+
+  .section > h2 {
+    font-size: 1.125rem;
+  }
+
+  .site-footer {
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .notes-list, .writing-category {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
